@@ -41,15 +41,20 @@ namespace VOS
         {
             double primaryScreenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
             double primaryScreenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
-            Left = (primaryScreenWidth - ActualWidth) / 2;
+            var desktop = System.Windows.SystemParameters.WorkArea;
+           // Left = (primaryScreenWidth - ActualHeight); topright
+            Left = desktop.Right - Width;
+            Top = desktop.Bottom - Height;
+            //Left = (primaryScreenHeight - ActualHeight);
             //Left = (primaryScreenWidth - ActualWidth - 100);
-            Top = 0;
+            //Top = 0;
         }
 
         private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             ((MainWindowViewModel)DataContext).IsRunning = !((MainWindowViewModel)DataContext).IsRunning;
-            ((MainWindowViewModel)DataContext).SetMessage("VOS HERE");
+            ((MainWindowViewModel)DataContext).SetMessage("");
+            ((MainWindowViewModel)DataContext).SpeakText("");
         }
     }
 }

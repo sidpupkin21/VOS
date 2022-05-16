@@ -361,3 +361,13 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/readme/readmeCSV.csv
+/readme/readme.xlsx
+/readme/keywords.cs
+/readme/csvoflist.txt
+/readme/CommandList.docx
+/readme/2015VOS - MVC.cs
+/readme/2014VOS - MVC.cs
+/lists.xlsx
+/lists.csv
+/readme/withqoutes.txt
