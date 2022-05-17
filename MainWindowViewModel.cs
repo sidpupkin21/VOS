@@ -23,8 +23,8 @@ namespace VOS
         //  get
            // {
             //    return _isRunning
-           // } 
-           // internal set; 
+           // }
+           // internal set;
        // }
 
         //internal void SetMessage(string v)
@@ -279,7 +279,7 @@ namespace VOS
             {
                 Console.WriteLine(e);
             }
-          
+
         }
 
         //public void emailText(string to, string sub, string body)
@@ -331,7 +331,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using WindowsInput;
-//using System.Diagnostics;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.IO;
 using VOS.Annotations;
@@ -351,9 +351,9 @@ namespace VOS
             SetMessage(""); //How may i be of service
             Init();
         }
-        
+
         private readonly object locko = new object();
-       
+
         public void SetMessage(string message)
         {
 
@@ -384,7 +384,7 @@ namespace VOS
                 }
             }).Start();
         }
-        
+
         public bool IsRunning
         {
             get { return _isRunning; }
@@ -453,7 +453,7 @@ namespace VOS
         //bool emailsub = false;
         //bool emailbod = false;
         //bool emailtow = false;
-        
+
         readonly SpeechSynthesizer talk = new SpeechSynthesizer();
         readonly PromptBuilder what = new PromptBuilder();
         readonly SpeechRecognitionEngine myvoice = new SpeechRecognitionEngine();
@@ -470,10 +470,10 @@ namespace VOS
                                     "shutdown","shutdown system","shutdown computer","can you shutdown the computer","restart","restart system","restart computer","can you restart the computer","can you put the computer to sleep","go to sleep","hibernate","hibernate computer","hibernate system","can you put the computer to hibernation mode",
                                     "time","what is the time","tell me the time","day","what is today","date","what is the date today","tell me the date","month","what is this month","what month are we in ","what month is it","Year","what year is it","what is this year","tell me the year",
                                     "location","where am i","what is my current location","weather","what is it like outside","what is the weather","what is the weather today","bluetooth on","can you turn on bluetooth","bluetooth off","can you turn off bluetooth","wifi on","turn the wifi on","turn on the wifi","turn on wifi","connect to the wifi",
-                                     "wifi off","turn off the wifi","turn the wifi off","turn off wifi","disconnect from wifi","airplane on","airplane mode on","airplane off","airplane mode off","brightness up","increas brightness","turn up brightness","brightness down","decrease brightness","turn down brightness","display off","turn off display","turn off screen",
-                                     "display on","turn on display","turn on screen","volume up","increase volume","turn up the volume","volume down","decrease volume","turn down the volume","mute ","can you mute","unmute","can you unmute","keyboard lights up","turn keyboard lights up","keyboard lgiths down","turn keyboard lights down","caps on","cap lock on","caps off",
-                                     "cap lock off","num lock on","turn num lock on","num lock off","turn num lock off","nightlight on","turn nightlight on","nightlight off","turn nightlight off"
-                                     ,"volume max","yes i do","no","yes", "no i dont", "yes sir"
+                                    "wifi off","turn off the wifi","turn the wifi off","turn off wifi","disconnect from wifi","airplane on","airplane mode on","airplane off","airplane mode off","brightness up","increas brightness","turn up brightness","brightness down","decrease brightness","turn down brightness","display off","turn off display","turn off screen",
+                                    "display on","turn on display","turn on screen","volume up","increase volume","turn up the volume","volume down","decrease volume","turn down the volume","mute ","can you mute","unmute","can you unmute","keyboard lights up","turn keyboard lights up","keyboard lgiths down","turn keyboard lights down","caps on","cap lock on","caps off",
+                                    "cap lock off","num lock on","turn num lock on","num lock off","turn num lock off","nightlight on","turn nightlight on","nightlight off","turn nightlight off"
+                    ,"volume max","yes i do","no","yes", "no i dont", "yes sir"
             });
 
             Grammar speech = new Grammar(new GrammarBuilder(list));
@@ -496,9 +496,9 @@ namespace VOS
 
         private void MyvoiceOnAudioStateChanged(object sender, AudioStateChangedEventArgs audioStateChangedEventArgs)
         {
-            if (audioStateChangedEventArgs.AudioState==AudioState.Stopped)
+            if (audioStateChangedEventArgs.AudioState == AudioState.Stopped)
             {
-               // Console.Beep();
+                // Console.Beep();
                 myvoice.SetInputToDefaultAudioDevice();
                 myvoice.RecognizeAsync(RecognizeMode.Multiple);
             }
@@ -515,14 +515,14 @@ namespace VOS
             //IsRunning = true;
             //  return;
             //}
-            
+
             if ((e.Result.Text.ToString() == "hey vos") || (e.Result.Text.ToString() == "vos"))
             {
                 ignore = false;
                 IsRunning = true;
                 return;
             }
-            
+
             if (IsRunning == true)
             {
                 switch (e.Result.Text.ToLower())//Starts with
@@ -567,7 +567,7 @@ namespace VOS
                     case "help menu":
                         {
                             string help = "VOS Basics:" +
-                                  "";
+                                          "";
                             System.Windows.Forms.MessageBox.Show(help);
                             IsRunning = false;
                             break;
@@ -578,10 +578,10 @@ namespace VOS
                             //    System.Windows.Forms.Application.SetSuspendState(PowerState.Suspend, false, true);
                             //  return;
                             //}
-                            //case: "sleepy System","can you put the computer to sleep", "system sleep","computer sleep", "shutdown system", "shutdown computer", "can you shutdown the computer", 
+                            //case: "sleepy System","can you put the computer to sleep", "system sleep","computer sleep", "shutdown system", "shutdown computer", "can you shutdown the computer",
 
                         }
-                    //control system i.e Restart/Shutdown/Sleep/Hybernate 
+                    //control system i.e Restart/Shutdown/Sleep/Hybernate
                     case "shutdown":
                     case "shutdown system":
                     case "shutdown computer":
@@ -665,7 +665,7 @@ namespace VOS
                             if((IsRunning == true) && (e.Result.Text == "yes"))
                             {
                                 SpeakText("Okay i will");
-                               
+
                             } //while (IsRunning == true);
                             return;
                         }*/
@@ -823,7 +823,7 @@ namespace VOS
                     case "bluetooth on":
                     case "can you turn on bluetooth":
                         {
-                            System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+                            
                             IsRunning = false;
                             return;
                         }
@@ -944,7 +944,7 @@ namespace VOS
         //    }
         //}
         #endregion
-       
+
         public event PropertyChangedEventHandler PropertyChanged;
         [NotifyPropertyChangedInvocator]
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
@@ -996,7 +996,7 @@ case "postgres": case"launch postgres": case"database management": case"database
       IsRunning = false;
       return;
   }*/
-//Launch and Control applications   
+//Launch and Control applications
 /* case "acrobat":case"adobe acrobat": case"launch acrobat": case "launch adobe acrobat": case"pdf": case "make a pdf": case"new pdf":
      {
          try
@@ -1087,7 +1087,7 @@ case "postgres": case"launch postgres": case"database management": case"database
          IsRunning = false;
          return;
      }
- case "calculator": case"launch calculator": case"open calculator": case"i want to do math": 
+ case "calculator": case"launch calculator": case"open calculator": case"i want to do math":
      {
          try
          {
@@ -1132,7 +1132,7 @@ case "postgres": case"launch postgres": case"database management": case"database
          IsRunning = false;
          return;
      }
- case "c lion": case"launch c lion": case"i want to write c code": case"code in c":case"make a c program": case "make a c project": 
+ case "c lion": case"launch c lion": case"i want to write c code": case"code in c":case"make a c program": case "make a c project":
      {
          try
          {
@@ -1402,7 +1402,7 @@ case "postgres": case"launch postgres": case"database management": case"database
          IsRunning = false;
          return;
      }
- case "notepad plus plus": case"launch notepad plus plus": 
+ case "notepad plus plus": case"launch notepad plus plus":
      {
          try
          {

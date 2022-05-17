@@ -42,7 +42,7 @@ namespace VOS
             double primaryScreenHeight = System.Windows.SystemParameters.PrimaryScreenHeight;
             double primaryScreenWidth = System.Windows.SystemParameters.PrimaryScreenWidth;
             var desktop = System.Windows.SystemParameters.WorkArea;
-           // Left = (primaryScreenWidth - ActualHeight); topright
+            // Left = (primaryScreenWidth - ActualHeight); topright
             Left = desktop.Right - Width;
             Top = desktop.Bottom - Height;
             //Left = (primaryScreenHeight - ActualHeight);
