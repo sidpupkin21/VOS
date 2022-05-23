@@ -1,0 +1,307 @@
+switch (e.Result.Text.ToLower())//Starts with
+                {
+                    //navigation and activation & termination of program
+                    //case "hi":case "hey":case "hello":
+                    // {
+                    //     ignore = true;
+                    //     SpeakText("hi " + Environment.UserName); //Environment. UserDomainName + "\\" + Environment. UserName
+                    //     IsRunning = false;
+                    //     break;
+                    // }
+                    case "can you hear me": case "can i ask for something": case "can you help me":
+                        {
+                            SpeakText("Yes " + Environment.UserName);
+                            //ignore = true;
+                            IsRunning = false;
+                            break;
+                        }
+                    case "stop": case "cancel": case "stop listening": case "i'm done":
+                        {
+                            //ignore = true;
+                            IsRunning = false;
+                            break;
+                        }
+                    case "exit": case "goodbye": case "bye": case "close application": case "close":
+                        {
+                            Application.Current.Shutdown();
+                            break;
+                        }
+                    case "help me": case "i need help": case "help menu":
+                        {
+                            string help = "VOS Basics:" +
+                                  "";
+                            System.Windows.Forms.MessageBox.Show(help);
+                            IsRunning = false;
+                            break;
+                            //case "help me": case "i need help":case  "help menu":
+                            // return;
+                            // case "restart system": case "restart computer": case "can you restart the computer":
+                            //   {
+                            //    System.Windows.Forms.Application.SetSuspendState(PowerState.Suspend, false, true);
+                            //  return;
+                            //}
+                            //case: "sleepy System","can you put the computer to sleep", "system sleep","computer sleep", "shutdown system", "shutdown computer", "can you shutdown the computer", 
+
+                        }
+                    //control system i.e Restart/Shutdown/Sleep/Hybernate 
+                    case "shutdown": case "shutdown system": case "shutdown computer": case "can you shutdown the computer":
+                        {
+                            SpeakText("Do you want to shutdown the system "); //+Environment.UserName;
+                            if (e.Result.Text.ToString() == "yes")
+                            {
+                                SpeakText("I will now Shutdown the computer, see you soon " + Environment.UserName);
+                                Process.Start("shutdown", "/s /t 0");
+                            }
+                            else if (e.Result.Text.ToLower() == "no")
+                            {
+                                IsRunning = false;
+                            }
+                            else
+                            {
+                                SpeakText("I didnt get that, did you say yes or no? ");
+                                IsRunning = true;
+                            }
+                            //Process.Start("shutdown", "/s /t 0");
+                            IsRunning = false;
+                            return;
+                        }
+                    case "restart": case "restart system": case "restart computer": case "can you restart the computer":
+                        {
+                            //SpeakText("I will now restart the computer, see you soon sir");
+                            //Process.Start("shutdown", "/r /t 0"); // r-restart,
+                            SpeakText("Do you want to shutdown the system?");
+                            if (e.Result.Text.ToString() == "yes")
+                            {
+                                SpeakText("I will now restart the computer, see you soon " + Environment.UserName);
+                                Process.Start("shutdown", "/r /t 0"); // r-restart,
+                            }
+                            else if (e.Result.Text.ToString() == "no")
+                            {
+                                IsRunning = false;
+                            }
+                            else
+                            {
+                                SpeakText("I didnt get that, did you say yes or no? ");
+                                IsRunning = true;
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                   
+                    case "hibernate": case "hibernate computer": case "hibernate system": case "can you put the computer to hibernation mode":
+                        {
+                            //SpeakText("Computer is going into hibernation mode now");
+                            //SetSuspendState(true, true, true);
+                            //Application.Current.Shutdown();
+                            if (e.Result.Text.ToString()== "yes")
+                            {
+                                SpeakText("Computer is going into hibernation mode now");
+                                SetSuspendState(true, true, true);
+                                Application.Current.Shutdown();
+                            }
+                            else if (e.Result.Text.ToString() == "no")
+                            {
+                                IsRunning = false;
+                            }
+                            else
+                            {
+                                SpeakText("I didnt get that, did you say yes or no? ");
+                                IsRunning = true;
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    /*case "sleep":
+                        {
+                            SpeakText("Do you want to go to sleep");
+                            IsRunning = true;
+                            if((IsRunning == true) && (e.Result.Text == "yes"))
+                            {
+                                SpeakText("Okay i will");
+                               
+                            } //while (IsRunning == true);
+                            return;
+                        }*/
+                    //SpeakText("Computer is going into sleep mode now");
+                    //SetSuspendState(false, true, true);
+                    //Application.Current.Shutdown();
+                    //time/date/weather/location
+                    case "time":  case "what is the time":  case "tell me the time":
+                        {
+                            SpeakText("The time is "+ DateTime.Now.ToLongTimeString());
+                            IsRunning = false;
+                            return;
+                        }
+                    case "day": case "what is today":
+                        {
+                            // SpeakText(DateTime.Now.To);
+                            SpeakText("Today is "+DateTime.Now.Day.ToString()+"th day of this month");
+                            IsRunning = false;
+                            return;
+                        }
+                    case "date":  case "what is the date today": case "tell me the date":
+                        {
+                            SpeakText("The date today is " + DateTime.Today.ToShortDateString());
+                            IsRunning = false;
+                            return;
+                        }
+                    case "year": case "what year is it": case "what is this year": case "tell me the year":
+                        {
+                            SpeakText("This year is " + DateTime.Today.Year);
+                            IsRunning = false;
+                            return;
+                        }
+                    case "location": case "where am i?": case "what is my current location":
+                        {
+
+                            return;
+                        }
+                    case "weather": case "what is it like outside": case "what is the weather ": case "what is the weather today":
+                        {
+                            return;
+                        }
+                //on/off
+                    case "volume up": case "increase volume"://case "turn up the volume":
+                        {
+                            for (int i = 0; i < 10; i++)
+                            {
+                                InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.VOLUME_UP, VirtualKeyCode.VOLUME_UP); 
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case "volume max":
+                        {
+                            for (int i = 0; i < 100; i++)
+                            {
+                                InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.VOLUME_UP, VirtualKeyCode.VOLUME_UP);
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case "volume down": case "decrease volume": case "turn down the volume":
+                        {
+                            for(int i = 0; i<10; i++)
+                            {
+                                InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.VOLUME_DOWN, VirtualKeyCode.VOLUME_DOWN);
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case "mute": case "can you mute":
+                        {
+                            InputSimulator.SimulateKeyPress(VirtualKeyCode.VOLUME_MUTE);
+                            IsRunning = false;
+                            return;
+                        }
+                    case "unmute": case "can you unmute":
+                        {
+                            var isKeyDown = InputSimulator.IsTogglingKeyInEffect((VirtualKeyCode.VOLUME_MUTE));//checks if mute
+                            if (isKeyDown == true)
+                            {
+                                InputSimulator.SimulateKeyPress(VirtualKeyCode.VOLUME_MUTE);
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case "num lock on": case "turn num lock on":
+                        {
+                            InputSimulator.SimulateKeyPress(VirtualKeyCode.NUMLOCK);
+                            IsRunning = false;
+                            return;
+                        }
+                    case "num lock off": case "turn num lock off":
+                        {
+                            var isKeyDown = InputSimulator.IsTogglingKeyInEffect((VirtualKeyCode.NUMLOCK)); //checks if pressed
+                            if (isKeyDown==true)
+                            {
+                                InputSimulator.SimulateKeyPress(VirtualKeyCode.NUMLOCK);
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case "caps on": case "cap lock on":
+                        {
+                            InputSimulator.SimulateKeyPress(VirtualKeyCode.CAPITAL);
+                            IsRunning = false;
+                            return;
+                        }
+                    case "caps off": case "cap lock off":
+                        {
+                            var isKeyDown = InputSimulator.IsTogglingKeyInEffect(VirtualKeyCode.CAPITAL);
+                            if (isKeyDown == true)
+                            {
+                                InputSimulator.SimulateKeyPress(VirtualKeyCode.CAPITAL);
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case "brightness up": case "increase brightness": case "turn up brightnesss":
+                        {
+                            IsRunning = true;
+                            return;
+                        }
+                    case "brightness down": case "decrease brightness": case "turn down brightness":
+                        {
+                            return;
+                        }
+
+
+                    case "bluetooth on": case "can you turn on bluetooth":
+                        {
+                            System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+                            IsRunning = false;
+                            return;
+                        }
+                    case "bluetooth off": case "can you turn off bluetooth":
+                        {
+                            return;
+                        }
+                    case "wifi on": case "turn the wifi on":case "turn on the wifi": case "turn on wifi":case "connect to the wifi":
+                        { 
+                            return; 
+                        }
+                    case "wifi off": case "turn off the wifi": case "turn the wifi off": case "turn off wifi": case "disconnect from the wifi":  
+                        {
+                            return; 
+                        }
+                    case "airplane on": case "airplane mode on":
+                        {
+                            return;
+                        }
+                    case "airplane off": case "airplane mode off":
+                        {
+                            return;
+                        }
+                    case "display off": case "turn off display": case "turn off sceeen":
+                        {
+                            return;
+                        }
+                    case "display on": case "turn on display": case "turn on screen":
+                        {
+                            return;
+                        }
+                    case "keyboard lights up": case "turn keyboard lights up":
+                        {
+                            return;
+                        }
+                    case "keyboard lights down": case "turn keyboard lights down":
+                        {
+                            return;
+                        }
+                    case "nightlight on": case "turn nightlight on":
+                        {
+                            return;
+                        }
+                    case "nightlight off": case "turn nightlight off":
+                        {
+                            return;
+                        }
+                    default:
+                        {
+                            SpeakText("I could not recognize the command");
+                            ignore = true;
+                            IsRunning = false;
+                            return;
+                        }
+                }

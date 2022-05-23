@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("VOS")]
-[assembly: AssemblyCopyright("Copyright ©  2014-2022")]
+[assembly: AssemblyCopyright("Copyright ©  2014-2022")] //(based on Miro by Ahmed Sid, Moe Houidi,Esra Hashim, and Mohamed Gamil)
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

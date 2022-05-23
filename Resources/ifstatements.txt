@@ -1,0 +1,266 @@
+//      try
+//    {
+//      //if (!IsRunning){      return;}
+//    if((e.Result.Text.ToLower() == "cancel")|| (e.Result.Text.ToLower() =="stop"))
+//  {
+//    IsRunning = false;
+//                return;
+//          }
+//        if((e.Result.Text.ToLower() =="hi")|| (e.Result.Text.ToLower() == "hey") || (e.Result.Text.ToLower() == "hello")
+//      ) 
+//    {
+//      SpeakText("hello " + Environment.UserName);
+//    IsRunning = false;
+//  return;
+// }
+//if(e.Result.Text.ToLower() == "exit")
+// {
+//    Application.Current.Shutdown();
+//   return;
+//}
+//while(!(e.Result.Text.ToLower() == " "))
+// {
+//   SpeakText("i could not recognize that command");
+//  IsRunning = false;
+//  return;
+// }
+// }
+//catch
+// {
+// if (!ignore && IsRunning)
+//{
+// SpeakText("i could not recognize that command");
+//   IsRunning = false;
+//     return;
+//   }
+// }
+/*try
+            {
+
+                if ((e.Result.Text.ToLower() == "hey vos")
+                    || (e.Result.Text.ToLower() == "hi vos")
+                    || (e.Result.Text.ToLower() == "hello vos")
+                    || (e.Result.Text.ToLower() == "is there anyone out there")
+                    || (e.Result.Text.ToLower() == "anyone there")
+                    || (e.Result.Text.ToLower() == "whatsup")
+                    || (e.Result.Text.ToLower() == "whatsup vos")
+                    || (e.Result.Text.ToLower() == "yo")
+                    || (e.Result.Text.ToLower() == "yo vos")
+                    )
+                {
+                    SpeakText("Yes, I'm here to help");
+                    ignore = true;
+                    IsRunning = false;
+                    return;
+                }
+                else if (e.Result.Text.ToLower() == "vos")
+                {
+                    ignore = true;
+                    IsRunning = true;
+                    return;
+                }
+                else if ((e.Result.Text.ToLower() == "cancel") || (e.Result.Text.ToLower() == "stop"))
+                {
+                    ignore = true;
+                    IsRunning = false;
+                    return;
+                }
+                else if (!IsRunning)
+                {
+                    return;
+                }
+                else if (
+                    (e.Result.Text.ToLower() == "exit")
+                    || (e.Result.Text.ToLower() == "goodbye")
+                    || (e.Result.Text.ToLower() == "bye")
+                    || (e.Result.Text.ToLower() == "peace out")
+                    || (e.Result.Text.ToLower() == "close")
+                    )
+                {
+                    //SpeakText("Goodbye");
+                    Application.Current.Shutdown();
+                    return;
+                }
+                else if ((e.Result.Text.ToLower() == "date")
+                    || (e.Result.Text.ToLower() == "whats the date")
+                    || (e.Result.Text.ToLower() == "what is the date")
+                    || (e.Result.Text.ToLower() == "what is the date today")
+                    || (e.Result.Text.ToLower() == "tell me the date")
+                    )
+                {
+                    SpeakText("Today is " + DateTime.Today.ToShortDateString());
+                    ignore = true;
+                    IsRunning = false;
+                    return;
+                }
+  
+            }
+            finally
+            {
+                if (!ignore && IsRunning)
+                {
+                    //SpeakText("I could not recognize this command, please try another one");
+                    SetMessage(e.Result.Text);
+                    IsRunning = false;
+                    //ignore = true;
+                    //return;
+                   
+                    
+                }
+            }*/
+/*
+                else if (e.Result.Text.ToLower() == "can you open Microsoft visual studio")
+                {
+                    try
+                    {
+                        pr.StartInfo.FileName =
+                            @"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\VCSExpress.exe";
+                        pr.Start();
+                        speakText("ohh , do you want to work on me ?");
+                    }
+                    catch
+                    {
+                        speakText("you do not seem to have installed visual studio installed");
+                    }
+                    return;
+                }
+                else if (e.Result.Text.ToLower() == "next slide")
+                {
+                    InputSimulator.SimulateKeyDown(VirtualKeyCode.RIGHT);
+                    return;
+                }
+                else if ((e.Result.Text.ToLower() == "hello") || (e.Result.Text.ToLower() == "hi"))
+                {
+
+                    speakText("hi sir , how are you");
+                    return;
+
+                }
+                else if (e.Result.Text.ToLower() == "good Morning")
+                {
+                    speakText("Good morning sir");
+                    return;
+                }
+                else if (e.Result.Text.ToLower() == "good afternoon")
+                {
+                    speakText("Good afternoon sir");
+                    return;
+                }
+                else if (e.Result.Text.ToLower() == "can you open facebook")
+                {
+                    pr.StartInfo.FileName = "http://www.facebook.com";
+                    pr.Start();
+                    speakText("here you go , you are in facebook sir");
+                    return;
+                }
+                else if (e.Result.Text.ToLower() == "can you open google")
+                {
+                    pr.StartInfo.FileName = "http://www.google.com";
+                    pr.Start();
+                    speakText("here you go sir, Google");
+                    return;
+                }
+                else if (e.Result.Text.ToLower() == "can you open hotmail")
+                {
+                    pr.StartInfo.FileName = "http://www.hotmail.com";
+                    pr.Start();
+                    speakText("here you go sir, Hotmail");
+                    return;
+                }
+                else if (e.Result.Text.ToLower() == "can you open yahoo")
+                {
+                    pr.StartInfo.FileName = "http://www.yahoo.com";
+                    pr.Start();
+                    speakText("here you go sir, Yahoo");
+                    return;
+                }
+                else if (e.Result.Text.ToLower() == "can you open linkedIn")
+                {
+                    pr.StartInfo.FileName = "http://www.Linkedin.com";
+                    pr.Start();
+                    speakText("here you go sir, LinkedIn");
+                    return;
+                }
+
+                else if (e.Result.Text.ToLower().ToLower() == "can you tell me the time")
+                {
+                    speakText("it is " + DateTime.Now.ToString("h:mm tt"));
+                    return;
+                }
+                else if (e.Result.Text.ToLower() == "can you open itunes")
+                {
+                    try
+                    {
+                        pr.StartInfo.FileName = "itunes.exe";
+                        pr.Start();
+                        speakText("ITUNES is starting for you.");
+                        return;
+                    }
+                    catch
+                    {
+                        speakText("you don't seem to have that installed");
+                        return;
+                    }
+                }
+                else if (e.Result.Text.ToLower() == "can you tell me today's schedule")
+                {
+                    speakText(
+                        "well sir, today is a very busy day. You have a meeting at school from 2:30 till 4:30, Then you have dinner with you uncle at alsalam rotana.");
+                    return;
+                }
+                else if (e.Result.Text.ToLower() == "am i free today")
+                {
+                    speakText("No your not free today sir.");
+                    return;
+                }
+				else if (e.Result.Text.ToLower() == "Can you tell yasin to suck my dick")
+				{
+					speakText("Yasin Suck Ahmed's Dick, You motherfucker");
+					return;
+				}
+                else if (e.Result.Text.ToLower() == "can you launch internet explorer")
+                {
+                    try
+                    {
+                        pr.StartInfo.FileName = "iexplore.exe";
+                        pr.Start();
+                        speakText("INTERNET EXPLORER is starting for you.");
+                        return;
+                    }
+                    catch
+                    {
+                        speakText("you don't seem to have that installed");
+                        return;
+                    }
+
+                }
+                else if (e.Result.Text.ToLower() == "can you open word")
+                {
+                    try
+                    {
+                        pr.StartInfo.FileName = "WINWORD.EXE";
+                        pr.Start();
+                        speakText("Microsoft office word is now starting for you sir.");
+                        return;
+                    }
+                    catch
+                    {
+                        speakText("you don't seem to have that installed");
+                        return;
+                    }
+                }
+                else if (e.Result.Text.ToLower() == "can you launch firefox")
+                {
+                    try
+                    {
+                        pr.StartInfo.FileName = "firefox.exe";
+                        pr.Start();
+                        speakText("Firefox is starting for you");
+                        return;
+                    }
+                    catch
+                    {
+                        speakText("you don't seem to have that installed");
+                        return;
+                    }
+                }*/

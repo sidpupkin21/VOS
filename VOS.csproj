@@ -78,6 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Old-New.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="EmptyMessageToVisibilityConverter.cs" />
     <Compile Include="InverseVisibilityConverter.cs" />
@@ -96,7 +97,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Annotations1.cs" />
+    <Compile Include="Annotations1.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

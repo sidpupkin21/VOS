@@ -1,0 +1,76 @@
+ //on/off
+                    case "volume up": case "increase volume"://case "turn up the volume":
+                        {
+                            for (int i = 0; i < 10; i++)
+                            {
+                                InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.VOLUME_UP, VirtualKeyCode.VOLUME_UP); 
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case "volume max":
+                        {
+                            for (int i = 0; i < 100; i++)
+                            {
+                                InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.VOLUME_UP, VirtualKeyCode.VOLUME_UP);
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case "volume down": case "decrease volume": case "turn down the volume":
+                        {
+                            for(int i = 0; i<10; i++)
+                            {
+                                InputSimulator.SimulateModifiedKeyStroke(VirtualKeyCode.VOLUME_DOWN, VirtualKeyCode.VOLUME_DOWN);
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case "mute": case "can you mute":
+                        {
+                            InputSimulator.SimulateKeyPress(VirtualKeyCode.VOLUME_MUTE);
+                            IsRunning = false;
+                            return;
+                        }
+                    case "unmute": case "can you unmute":
+                        {
+                            var isKeyDown = InputSimulator.IsTogglingKeyInEffect((VirtualKeyCode.VOLUME_MUTE));//checks if mute
+                            if (isKeyDown == true)
+                            {
+                                InputSimulator.SimulateKeyPress(VirtualKeyCode.VOLUME_MUTE);
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case "num lock on": case "turn num lock on":
+                        {
+                            InputSimulator.SimulateKeyPress(VirtualKeyCode.NUMLOCK);
+                            IsRunning = false;
+                            return;
+                        }
+                    case "num lock off": case "turn num lock off":
+                        {
+                            var isKeyDown = InputSimulator.IsTogglingKeyInEffect((VirtualKeyCode.NUMLOCK)); //checks if pressed
+                            if (isKeyDown==true)
+                            {
+                                InputSimulator.SimulateKeyPress(VirtualKeyCode.NUMLOCK);
+                            }
+                            IsRunning = false;
+                            return;
+                        }
+                    case"caps on": case"cap lock on":
+                        {
+                            InputSimulator.SimulateKeyPress(VirtualKeyCode.CAPITAL);
+                            IsRunning = false;
+                            return;
+                        }
+                    case"caps off": case"cap lock off":
+                        {
+                            var isKeyDown = InputSimulator.IsTogglingKeyInEffect(VirtualKeyCode.CAPITAL);
+                            if (isKeyDown == true)
+                            {
+                                InputSimulator.SimulateKeyPress(VirtualKeyCode.CAPITAL);
+                            }
+                            IsRunning = false;
+                            return;
+                        }
