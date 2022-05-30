@@ -1,4 +1,6 @@
-HOW TO USE ME:
-1. Say my name or press my goggles,when i start moving i'm actually listening for a command.
-2. To get my attention just say hey vos or just vos and i'll serve you to my best ability 
-3. 
+HOW TO USE:
+  -Activate by saying VOS or pressing on the goggles on the bottom right of the screen
+  -Goggle Movement indicates the program is listening
+  -Stop the program by saying cancel or stop
+  -Launch Applications by saying their name
+  -Execute keyboard shortcuts by saying their function
